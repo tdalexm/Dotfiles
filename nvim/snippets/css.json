@@ -1,0 +1,110 @@
+{
+	"Property Default": {
+		"prefix": "td-property-default",
+		"body": [
+			"--${1:color}-default: ${3:var(--black)};",
+			"--_${1:color}: var(--${1:color}, var(--${1:color}-default));",
+			"",
+			"${2:color}: var(--_${1:color});"
+		],
+		"description": "Define una propiedad CSS con un valor predeterminado."
+	},
+	"Full Background Section": {
+		"prefix": "td-fullbg-section",
+		"body": [
+			"--${1:bg}: #fafafa;",
+			"box-shadow: 0 0 0 100vmax var(--${1:bg});",
+			"clip-path: inset(0 -100vmax);",
+			"background-color: var(--${1:bg});"
+		],
+		"description": "Crea una sección con un fondo completo."
+	},
+	"CSS Media Query": {
+		"prefix": "css-media",
+		"body": [
+			"@media (max-width: ${1:991}px) {",
+			"    ${2}",
+			"}"
+		],
+		"description": "Define una media query en CSS."
+	},
+	"Size": {
+		"prefix": "td-size",
+		"body": [
+			"--_size: var(--size, ${1:180}px);",
+			"height: var(--_size);",
+			"width: var(--_size);"
+		],
+		"description": "Define un tamaño en CSS usando variables."
+	},
+	"Before Pseudo-element": {
+		"prefix": "td-before",
+		"body": [
+			"${1}::before {",
+			"    --_size: var(--size, ${2:24}px);",
+			"    content: '';",
+			"    position: relative;",
+			"    display: block;",
+			"    height: var(--_size);",
+			"    width: var(--_size);",
+			"    background-image: url('${3}');",
+			"    background-size: calc(var(--_size) * 0.9);",
+			"    background-position: center;",
+			"    background-repeat: no-repeat;",
+			"}"
+		],
+		"description": "Define un pseudo-elemento ::before con propiedades personalizadas."
+	},
+	"Clamp with Transitions": {
+		"prefix": "td-clamp-trans",
+		"body": [
+			"--max: ${1:32};",
+			"--min: ${2:16};",
+			"--maxt: ${4:1700};",
+			"--mint: ${5:992};",
+			"",
+			"${3:font-size}: clamp(var(--min) * 1px, calc((var(--max) - var(--min)) * ((100vw - var(--_mint)* 1px) / (var(--_maxt) - var(--_mint))) + var(--min) * 1px), var(--max) * 1px);"
+		],
+		"description": "Define una propiedad CSS con clamp y transiciones."
+	},
+	"Basic Clamp": {
+		"prefix": "td-clamp",
+		"body": [
+			"--${1:max}: ${3:32};",
+			"--${2:min}: ${4:16};",
+			"",
+			"${5:font-size}: clamp(var(--${2:min}) * 1px, calc((var(--${1:max}) - var(--${2:min})) * ((100vw - var(--_mint)* 1px) / (var(--_maxt) - var(--_mint))) + var(--${2:min}) * 1px), var(--${1:max}) * 1px);"
+		],
+		"description": "Define una propiedad CSS con clamp básico."
+	},
+	"Stacked Layout": {
+		"prefix": "td-stacked",
+		"body": [
+			"${1} {",
+			"    display: grid;",
+			"    height: 100%;",
+			"    width: 100%;",
+			"    isolation: isolate;",
+			"}",
+			"",
+			"${1} > * {",
+			"    grid-row: 1 / -1;",
+			"    grid-column: 1 / -1;",
+			"    z-index: 1;",
+			"    min-height: 0;",
+			"    min-width: 0;",
+			"}"
+		],
+		"description": "Define un diseño apilado (stacked layout) en CSS."
+	},
+	"Mint (Breakpoint) Snippet": {
+		"prefix": "td-mint",
+		"body": [
+			"--maxt-d: ${1:1600};",
+			"--mint-d: ${2:768};",
+			"--_maxt: var(--maxt, var(--maxt-d));",
+			"--_mint: var(--mint, var(--mint-d));"
+		],
+		"description": "Define puntos de interrupción (breakpoints) en CSS."
+	}
+}
